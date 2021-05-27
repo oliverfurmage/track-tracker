@@ -52,9 +52,25 @@ class App extends React.Component {
     return (
       <div className="tt-app">
 
+        <header className="tt-header">
+          <div className="container">
+            <div className="row">
+              <div class="col">
+                <h1>
+                  Track
+                  <br/>
+                  Tracker
+                </h1>
+              </div>
+              <div class="col-auto">
+                
+              </div>
+            </div>
+          </div>
+        </header>
+
         <div className="tt-main">
 
-          
           {this.state.token != null ? (
             <FavouriteTracks token={this.state.token}/>
           ) : "" }
