@@ -28,7 +28,7 @@ class Home extends Component{
                                     <h3>Favourite Songs</h3>
                                 </Link>
                             </div>
-                            <div className="col-6">
+                            <div className="col-6 d-none">
                                 <Link to="/favourite-tracks" className="tt-square-link">
                                     <div className="tt-square-link-image"></div>
                                     <h3>Favourite Artists</h3>
@@ -37,7 +37,7 @@ class Home extends Component{
                         </div>
                     </div>
 
-                    <div className="tt-square-link-list">
+                    <div className="tt-square-link-list d-none">
                         <h2>Play some games</h2>
                         <div className="row">
                             <div className="col-6">
