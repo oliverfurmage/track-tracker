@@ -1,31 +1,91 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap');
 html, body{
-  background-color: #0A060E;
+  background-color: #191414;
   color:#fff;
 }
 
+.btn-check:focus +.btn, .btn:focus{
+  box-shadow: 0 0 0 0.1rem #1DB953;
+}
+a{
+  color:#fff;
+}
 h1,h2,h3,h4,h5,h6{
-  font-family: 'Archivo Black', sans-serif;
-  text-transform: uppercase;
-}
-h1,h2{
-  text-shadow: 4px 4px #0A060E, 6px 6px #8B5FBF;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  margin:0;
 }
 
-.tt-header{
-  padding: 30px;
-  background-color: #8B5FBF;
+h2{
+  font-size:20px;
 }
-.tt-header h1{
-  line-height: 1;
+h3,h4,h5,h6{
+  font-size: 14px;
+}
+
+.btn-clear,
+.btn-clear:hover,
+.btn-clear:active,
+.btn-clear:focus{
   color:#fff;
-  text-shadow: 3px 3px #8B5FBF, 7px 7px #0A060E;
+  border-color: #fff;
+}
+
+
+select{
+  padding: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  color:#fff;
+  background-color: #191414;
+  border-color: #ccc;
+  border-radius: 10px;
+}
+
+.tt-bg-white{
+  background-color: #fff;
+}
+.tt-bg-green{
+  background-color: #1DB953;
+}
+
+.tt-page-header{
+  padding: 0 0 20px;
+}
+.tt-page-h1{
+  background-color: #1DB953;
+  padding: 40px 0 15px;
+}
+.tt-page-header h2{
+  font-size: 12px;
+  font-weight: 500;
+  color:#ccc;
+  padding: 10px 0 0;
+}
+
+.tt-square-link-list h2{
+  padding: 0 0 10px;
+}
+.tt-square-link-list + .tt-square-link-list{
+  margin-top: 30px;
+}
+
+.tt-square-link{
+  text-decoration: none;
+}
+.tt-square-link-image{
+  width:100%;
+  padding: 0 0 100%;
+  background-color: #1DB953;
+  background-position: center;
+  background-size: cover;
+}
+.tt-square-link h3{
+  padding: 10px 0 5px;
 }
 
 .tt-track-list{
-  margin: -30px 0 0;
+  margin: -30px 0 30px;
 }
 .tt-track{
   position: relative;
@@ -35,19 +95,76 @@ h1,h2{
 }
 .tt-track-image{
   display: flex;
-  height: 70px;
-  flex: 0 0 70px;
+  height: 50px;
+  flex: 0 0 50px;
   background-size: cover;
   background-position: center;
 }
 .tt-track-content{
-  padding: 0 30px;
+  flex: 1;
+  min-width: 0;
+  padding: 5px 15px;
 }
 .tt-track-content h2{
-  font-size: 22px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 26px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .tt-track-content h3{
-  color: #8B5FBF;
-  font-size:18px;
-  font-style: italic;
+  color: #ccc;
+  font-size:12px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+.tt-track-index{
+  width: 20px;
+  line-height: 20px;
+  margin: 15px 0;
+  font-size:10px;
+  font-weight: 700;
+  color:#191414;
+  background-color: #1DB953;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.tt-flyin{
+  position: fixed;
+  top: 100%;
+  left:0;
+  width:100%;
+  height:100%;
+
+  z-index: 100;
+
+  padding: 10% 0 0;
+  background-color: rgba(0,0,0,0.5);
+  opacity: 0;
+
+  transition: opacity 0.3s;
+}
+.tt-flyin > .tt-flyin-box{
+  padding: 0 15px 30px;
+  position: relative;
+  top: 100%;
+  width:100%;
+  height: 100%;
+  background-color: #191414;
+
+  transition: top 0.6s;
+}
+
+.tt-flyin.open{
+  top:0;
+  opacity: 1;
+}
+.tt-flyin.open .tt-flyin-box{
+  top:0;
+}
+
