@@ -66,6 +66,11 @@ select{
 .tt-square-link-list h2{
   padding: 0 0 10px;
 }
+.tt-square-link-list .row{
+  flex-wrap: nowrap;
+  overflow: scroll;
+  padding-bottom: 10px;
+}
 .tt-square-link-list + .tt-square-link-list{
   margin-top: 30px;
 }
