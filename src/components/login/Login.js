@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 
 const authEndpoint = 'https://accounts.spotify.com/authorize?';
-const clientId = "07821bcdfa0f45148a5f9178f8f48a01";
-const redirectUri = "http://localhost:3000/login";
+const clientId = process.env.REACT_APP_SPOTIFY_CLIENTID;
+const redirectUri = process.env.REACT_APP_SPOTIFY_REDIRECT;
 const scopes = [
-  "user-top-read"
+  "user-top-read",
+  "user-read-email"
 ];
 
 const authUrl = `${authEndpoint}client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`;
@@ -14,7 +15,7 @@ class Login extends Component{
 
     constructor(props){
         super(props);
-
+        
         this.state = {
             needsAuth : false
         }
@@ -52,7 +53,6 @@ class Login extends Component{
     }
 
     render(){
-
         if(this.state.needsAuth){
             window.location.href = authUrl;
         }
