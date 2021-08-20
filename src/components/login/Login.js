@@ -15,10 +15,6 @@ class Login extends Component{
 
     constructor(props){
         super(props);
-        
-        this.state = {
-            needsAuth : false
-        }
     }
 
     componentDidMount(){
@@ -43,22 +39,18 @@ class Login extends Component{
         // Get Token
         var _token = localStorage.getItem("token");
 
-        if (_token) {
-            window.location.href = "/";
+        if(_token == "null" || _token == null){
+            window.location.href = authUrl;
         } else{
-            this.setState({
-                needsAuth : true
-            })
+            window.location.href = "/";
         }
     }
 
     render(){
-        if(this.state.needsAuth){
-            window.location.href = authUrl;
-        }
-
         return (
-            "Loading..."
+            <div>
+                <em className="fa fa-spinner"></em>
+            </div>
         )
     }
 }
