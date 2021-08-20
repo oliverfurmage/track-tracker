@@ -11,8 +11,6 @@ class Logout extends Component{
 
     constructor(props){
         super(props);
-        window.localStorage.removeItem("token");
-        window.location.href = "/login";
     }
 
     componentDidMount(){
@@ -23,7 +21,9 @@ class Logout extends Component{
     render(){
 
         return (
-            "Logging Out..."
+            <div>
+                <em className="fa fa-spinner"></em>
+            </div>
         )
     }
 }

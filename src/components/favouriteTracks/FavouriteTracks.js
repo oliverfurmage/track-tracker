@@ -47,7 +47,9 @@ class FavouriteTracks extends Component{
                 // success
                 (result) =>{
 
-                    console.log(2, result);
+                    console.groupCollapsed("/me/top/tracks");
+                    console.log(result);
+                    console.groupEnd();
 
                     if(!result.error){
                         this.setState({

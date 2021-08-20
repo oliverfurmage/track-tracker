@@ -17,60 +17,68 @@ import Logout from './components/logout/Logout';
 
 class App extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
 
-    this.state ={
-      token : null,
+    this.state = {
+      token: null,
       user: null,
-      userLoaded : false
+      userLoaded: false
     };
 
   }
 
-  componentDidMount(){
+  componentDidMount() {
+    this.checkAuth();
     this.getUser();
   }
 
-  getUser(){
-    var token = localStorage.getItem("token");
+  checkAuth() {
+    var excludedRoutes = ["/logout", "/login"];
+    var path = window.location.pathname.toLowerCase();
 
-    if(token != null){ 
-      fetch(`https://api.spotify.com/v1/me`, {headers : {'Authorization' : 'Bearer '+ token}})
-        .then(res => res.json())
-        .then(
-        // success
-        (user) =>{
-          this.setState({
-            user: user,
-            userLoaded : true
-          });
-        })
-    } else{
-      this.setState({
-        user: null,
-        userLoaded : true
-      });
+
+    if (!excludedRoutes.includes(path)) {
+      var token = localStorage.getItem("token");
+      console.log(token);
+      if (token == "null" || token == null) {
+        window.location.href = "/logout";
+      }
     }
 
+  }
+
+  getUser() {
+    var token = localStorage.getItem("token");
+
+    fetch(`https://api.spotify.com/v1/me`, { headers: { 'Authorization': 'Bearer ' + token } })
+      .then(res => res.json())
+      .then(
+        // success
+        (user) => {
+          this.setState({
+            user: user,
+            userLoaded: true
+          });
+        });
   }
 
   render() {
     return (
       <div className="tt-app">
 
-        { this.state.userLoaded ? (
+        {this.state.userLoaded ? (
           <div className="tt-main">
             <Router>
               <Switch>
                 <Route path="/login">
-                  <Login/>
+                  <Login />
                 </Route>
                 <Route path="/logout">
-                  <Logout/>
+                  <Logout />
                 </Route>
                 <PrivateRoute path="/favourite-tracks" user={this.state.user}>
-                  <FavouriteTracks/>
+                  <FavouriteTracks />
                 </PrivateRoute>
                 <PrivateRoute path="/" user={this.state.user}>
                   <Home />
@@ -81,18 +89,19 @@ class App extends Component {
         ) : ""}
 
       </div>
-  );
- }
+    );
+  }
+
 }
 
-function PrivateRoute({user, children, ...rest}){
+function PrivateRoute({ user, children, ...rest }) {
   return (
     <Route
       {...rest}
       render={() =>
-        user ? 
-          (children) :         
-          (<Redirect to={{pathname: "/login"}}/>)
+        user ?
+          (children) :
+          (<Redirect to={{ pathname: "/login" }} />)
       }
     />
   );
